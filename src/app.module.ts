@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TasksModule } from './tasks/tasks.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import 'dotenv/config';
 
 @Module({
   imports: [
     TasksModule,
     MongooseModule.forRoot(
-      `mongodb+srv://admin:gTJ2UVEzHSVOOn6o@cluster0.p9cvk.mongodb.net/poc_nestjs`,
+      `mongodb+srv://admin:${process.env.DATABASE_PASS}@cluster0.p9cvk.mongodb.net/${process.env.DATABASE_NAME}`,
     ),
   ],
   controllers: [],
